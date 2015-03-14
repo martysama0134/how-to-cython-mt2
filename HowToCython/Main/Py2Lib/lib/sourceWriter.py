@@ -1,7 +1,10 @@
 # -*- coding: cp949 -*-
-def run(moduleLst, libname):
+def run(moduleLst, libname, caseSensitive = False):
 	libname = libname.strip()
 	sourceName = "Python%sManager" % libname
+	cmpFncName = "strcmp"
+	if not caseSensitive:
+		cmpFncName = "_stricmp"
 
 	initSource = open(sourceName + ".cpp", "w")
 	initHeader = open(sourceName + ".h", "w")
@@ -45,7 +48,7 @@ def run(moduleLst, libname):
 	initSource.write('\n')
 	initSource.write('	for (int i = 0; NULL != %s_init_methods[i].func_name;i++)\n' % libname)
 	initSource.write('	{\n')
-	initSource.write('		if (0 == strcmp(%s_init_methods[i].func_name, func_name))\n' % libname)
+	initSource.write('		if (0 == %s(%s_init_methods[i].func_name, func_name))\n' % (cmpFncName, libname))
 	initSource.write('		{\n')
 	initSource.write('			return Py_BuildValue("i", 1);\n')
 	initSource.write('		}\n')
@@ -62,12 +65,12 @@ def run(moduleLst, libname):
 	initSource.write('\n')
 	initSource.write('	for (int i = 0; NULL != %s_init_methods[i].func_name;i++)\n' % libname)
 	initSource.write('	{\n')
-	initSource.write('		if (0 == strcmp(%s_init_methods[i].func_name, func_name))\n' % libname)
+	initSource.write('		if (0 == %s(%s_init_methods[i].func_name, func_name))\n' % (cmpFncName, libname))
 	initSource.write('		{\n')
 	initSource.write('			%s_init_methods[i].func();\n' % libname)
 	initSource.write('			if (PyErr_Occurred())\n')
 	initSource.write('				return NULL;\n')
-	initSource.write('			PyObject* m = PyDict_GetItemString(PyImport_GetModuleDict(), func_name);\n')
+	initSource.write('			PyObject* m = PyDict_GetItemString(PyImport_GetModuleDict(), %s_init_methods[i].func_name);\n' % libname)
 	initSource.write('			if (m == NULL) {\n')
 	initSource.write('				PyErr_SetString(PyExc_SystemError,\n')
 	initSource.write('					"dynamic module not initialized properly");\n')
@@ -115,6 +118,7 @@ def run(moduleLst, libname):
 	initHeader.write("/* %s module */\n" % libname)
 	initHeader.write("/* %s.isExist */\n" % libname)
 	initHeader.write("/* %s.moduleImport */\n" % libname)
+	initHeader.write("/* %s.getList */\n" % libname)
 	initHeader.write("/* this lib includes modules under this lines.\n")
 	for moduleName in moduleLst:
 		initHeader.write("	%s\n" % moduleName)
