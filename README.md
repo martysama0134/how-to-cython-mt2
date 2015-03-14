@@ -43,9 +43,19 @@ Such archive contains the following things:
  - Extra\uiscriptlibpyd\ -> A sample project to build your own uiscriptlib.pyd
 
 
+## VideoTutorial
 
+> [How-To] Metin2 & Cython - Part 1 - Build rootlib
 
+[![Video Label](http://img.youtube.com/vi/wQ5GfUopy58/0.jpg)](http://www.youtube.com/watch?v=wQ5GfUopy58)
 
+> [How-To] Metin2 & Cython - Part 2 A - Build metin2client with rootlib linked inside
+
+[![Video Label](http://img.youtube.com/vi/qHB4EGed6Ts/0.jpg)](http://www.youtube.com/watch?v=qHB4EGed6Ts)
+
+> [How-To] Metin2 & Cython - Part 2 B - Build a PYD from rootlib
+
+[![Video Label](http://img.youtube.com/vi/iMt0SiO3sQI/0.jpg)](http://www.youtube.com/watch?v=iMt0SiO3sQI)
 
 
 ## FAQs
