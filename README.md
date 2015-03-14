@@ -50,8 +50,10 @@ Such archive contains the following things:
 
 ## FAQs
 
->I think you should make a guide of how to repair the errors given by the *.py files when you are cythonicing, since a lot of people don't know what to do in these cases.
+###Q1
+> I think you should make a guide of how to repair the errors given by the *.py files when you are cythonicing, since a lot of people don't know what to do in these cases.
 
+###A1
 The only two errors you could get when you compile your root are:
 
 - "Decoding error, missing or incorrect coding"
@@ -72,21 +74,25 @@ The only two errors you could get when you compile your root are:
 
   It's clear that you won't be able to compile unworkable/unrunnable/broken .py files.
 
-
+###Q2
 > Can you cythonize all the python files of the client? I mean really each py file, including every script.
 
+###A2
 The script as "it is", right now, creates a "rootlib" module. There are, at least, 10 ways to do what you asked.
 
 The easier one, using cython, would be making a "uiscriptlib" library, and re-writing the Sandbox.execfile method inside the utils.py file.
 
 Edit: The "uiscriptlib" will be added in the next update!
 
+###Q3
 > When I run the MakeFile_VC_Release.bat file, I get the following errors:
 >
-> ```'cl' is not recognized as an internal or external command, operable program or batch file.
+> ```
+'cl' is not recognized as an internal or external command, operable program or batch file.
 'lib' is not recognized as an internal or external command, operable program or batch file.
 ```
 
+###A3
 It's simple: it happens when the visual studio path is not specified in the %PATH% environment variable.
 You have few solutions:
 
@@ -94,70 +100,87 @@ You have few solutions:
 
 - Add something like this at the beginning of the MakeFile_VC_Release.bat file and run it as administrator: (easy way)
 
-  ``` call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"```
+  ```call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"```
 
 - You should run as admininistrator the "Visual Studio Command Prompt (2010)" and then recall the .bat from there. (highly preferable)
 
 Note: I've used vs2010, but it works without any problems with any vs version.
 
+###Q4
 > Do I really have to compile all the root files or not?
 >
 > I can compile a few files from the root or all files is needed?
 
+###A4
 If you use the files as "they are", only system.py and prototype.py are required.
 
-If the module you want to include is not present in the rootlib one, the client will try to open the relative <modulename>.py file.
+If the module you want to include is not present in the rootlib one, the client will try to open the relative **modulename**.py file.
 
+###Q5
 > How do I fix the following error when I open the client?
 >
 > ```Error: pack_open```
 
+###A5
 Open system.py, below this:
 
-``` __builtins__.new_open = open ```
+```__builtins__.new_open = open```
 
 add:
 
 ```__builtins__.pack_open = open```
 
+###Q6
 > When cythonized, is there still need dynamic linking e.g: python27.dll or library files?
 
+###A6
 Yes, the python27.dll, and the \lib folder are still required.
 
+###Q7
 > When I try to log in the game, my client crash with the following error:
 >
 > ```networkModule.SetSelectCharacterPhase - <type 'exceptions.ImportError'>:No module named uiSelectItem```
 
+###A7
 With the default-cython code, uiSelectItem is not uiselectitem! (case-sensitive check)
 
 On the newer root, it's typed and used in lowercase:
 
-```.\pack\root>findstr /SC:"uiselectitem" *
+```
+.\pack\root>findstr /SC:"uiselectitem" *
 interfacemodule.py:import uiselectitem
-interfacemodule.py:             self.wndItemSelect = uiselectitem.SelectItemWindow()```
+interfacemodule.py:             self.wndItemSelect = uiselectitem.SelectItemWindow()
+```
 
 You can replace uiSelectItem with uiselectitem in the interfacemodule.py.
 
 Note: Try to re-cythonize your files again with the last how-to-cython-mt2 version
 
+###Q8
 > When I compile the launcher with rootlib inside, I get this error:
 >
 > ```Cannot open include file 'Python.h': No such file or directory```
 
+###A8
 You haven't specified the right python path.
 
 You have two solutions based on how your source files are written:
 
 - You can easily copy the one used by ScriptLib into the Python<module>Manager.cpp file like this:
-  ```.\Srcs\Client>findstr /SC:"Python.h" *.h *.cpp
+
+  ```
+.\Srcs\Client>findstr /SC:"Python.h" *.h *.cpp
 ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
 ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
-UserInterface\PythonrootlibManager.cpp:#include "../../Extern/Python27/Python.h"```
+UserInterface\PythonrootlibManager.cpp:#include "../../Extern/Python27/Python.h"
+  ```
 
 - You can specify the right path from the project's Properties: (you should at least know what you're doing)
-  ```From Properties, set Configuration as "All Configurations"
+  ```
+From Properties, set Configuration as "All Configurations"
     and change the following values inside Configuration Properties:
 C/C++ -> General
 	Additional Include Directories = YOURPYTHONINCLUDEPATH
 Linker -> General
-	Additional Library Directories = YOURPYTHONLIBSPATH```
+	Additional Library Directories = YOURPYTHONLIBSPATH
+  ```
