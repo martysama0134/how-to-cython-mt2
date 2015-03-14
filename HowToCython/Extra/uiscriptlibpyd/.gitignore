@@ -1,0 +1,7 @@
+obj
+ipch
+Debug
+Release
+*.ncb
+*.sdf
+*.opensdf
