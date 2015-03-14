@@ -1,0 +1,54 @@
+#### Tutorial made by martysama0134/lollo_9_1 ####
+
+### REQUIREMENTS
+1) Python2.7 https://www.python.org/download/releases/2.7/
+2) Visual Studio (Express/Ultimate) 2008, 2010, 2012 or 2013
+
+### CONFIG OPTIONS CHECK
+1) Adjust the compiler path variables (VSINSTALLDIR, VCINSTALLDIR) inside MakeFile_VC_Release.bat
+2) Adjust the python path variables (PYTHONLIBSPATH, PYTHONINCLUDEPATH) inside MakeFile_VC_Release.bat
+
+### ROOTLIB COMPILING
+1) Copy all your root\*.py files into the .\Main\RootLib folder
+2) Copy python.exe, RootLibCythonizer.bat, and RootLibCythonizer.py from .\Main into the .\Main\RootLib folder
+3) Run .\Main\RootLib\RootLibCythonizer.bat
+4) Put MakeFile_VC_Release.bat inside the .\Main\RootLib\cyTemp folder and run it
+*rootlib.lib successfully compiled*
+
+### ROOTLIB INSIDE THE METIN2LAUNCHER PROJECT
+1) Make a copy of the following files:
+	.\Main\RootLib\PythonrootlibManager.h
+	.\Main\RootLib\PythonrootlibManager.cpp
+	.\Main\RootLib\cyTemp\rootlib.lib
+2) Include the files PythonrootlibManager.h, PythonrootlibManager.cpp in the UserInterface project
+3) Copy the rootlib.lib file into the Extern\lib folder
+4) Read the content of the HOW-TO-CYTHON-USERINTERFACE-CPP-EDITS.txt file
+5) Replace initsystem to initsystemSetting inside:
+	.\Client\UserInterface\UserInterface.cpp
+	.\Client\UserInterface\PythonSystemModule.cpp
+	.\Client\UserInterface\StdAfx.h
+6) Build
+*launcher with cython successfully compiled*
+
+### ROOTLIB OUTSIDE THE METIN2LAUNCHER PROJECT AND LOADED AS PYD
+1) Read the content of the HOW-TO-CYTHON-PYD-TUT.txt file
+2) Read the content of the HOW-TO-CYTHON-USERINTERFACE-CPP-EDITS.txt file
+	NB: You should not include the .h and .cpp files specified in the PHASE 1
+3) Copy rootlib.pyd inside the client\lib path
+4) Run the launcher
+*launcher with rootlib as pyd successfully started*
+
+### GENERAL INFO
+-) rootlib.lib (Debug) -> 80mb
+-) rootlib.lib (Release) -> 40mb
+
+### ALREADY KNOWN BUGS:
+-) When you cythonize the files, the *.py files are processed using the korean charset.
+	Text written with a different charset (e.g. Arabic) will trigger the "illegal char" exception.
+-) When you compile the *.c files to build the rootlib.lib file, you could get the following error:
+	"c:\program files\python27\include\pyconfig.h(227): Cannot open include file: 'basetsd.h'"
+	You should remove the "#include <basetsd.h>" line from pyconfig.h. (tl;dr http://i.imgur.com/7Uf8vT5.png)
+-) When you include the PythonrootlibManager files in your UserInterface project,
+	you should check whether or not the python path should really be "Python.h" inside "PythonrootlibManager.cpp"
+	NB: Few people changed '#include "Python.h"' with '#include "../../Extern/Python27/Python.h"'
+

@@ -1,0 +1,91 @@
+#### Tutorial made by martysama0134/lollo_9_1 ####
+
+// @@@ ### ALL THE EDITS MUST BE APPLIED INTO THE UserInterface\UserInterface.cpp file!
+
+// @@@ ## PHASE 1
+// @@@ # Search for:
+bool __IS_TEST_SERVER_MODE__=false;
+// @@@ # Paste below:
+#define __USE_CYTHON__
+#ifdef __USE_CYTHON__
+// don't include these two files .h .cpp if you're implementing cython via .pyd
+#include "PythonrootlibManager.h"
+// it would be better including such file in the project, but this is easier at this moment:
+#include "PythonrootlibManager.cpp"
+#endif
+
+
+// @@@ ## PHASE 2
+// @@@ # Search for:
+	initsafebox();
+	initguild();
+	initServerStateChecker();
+// @@@ # Paste below:
+#ifdef __USE_CYTHON__
+	initrootlibManager();
+#endif
+
+
+// @@@ ## PHASE 3
+// @@@ # Search for:
+	{
+		std::string stRegisterDebugFlag;
+
+#ifdef _DISTRIBUTE
+		stRegisterDebugFlag ="__DEBUG__ = 0";
+#else
+		stRegisterDebugFlag ="__DEBUG__ = 1";
+#endif
+
+		if (!pyLauncher.RunLine(stRegisterDebugFlag.c_str()))
+		{
+			TraceError("RegisterDebugFlag Error");
+			return false;
+		}
+	}
+// @@@ # Replace with:
+    PyObject * builtins = PyImport_ImportModule("__builtin__");
+#ifdef _DISTRIBUTE
+	PyModule_AddIntConstant(builtins, "__DEBUG__", 1);
+#else
+	PyModule_AddIntConstant(builtins, "__DEBUG__", 0);
+#endif
+#ifdef __USE_CYTHON__
+	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 1);
+#else
+	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 0);
+#endif
+
+
+// @@@ ## PHASE 4
+// @@@ # Search for:
+		stRegisterCmdLine ="__COMMAND_LINE__ = ";
+		stRegisterCmdLine+='"';
+		stRegisterCmdLine+=stCmdLine;
+		stRegisterCmdLine+='"';
+
+		const CHAR* c_szRegisterCmdLine=stRegisterCmdLine.c_str();
+		if (!pyLauncher.RunLine(c_szRegisterCmdLine))
+		{
+			TraceError("RegisterCommandLine Error");
+			return false;
+		}
+// @@@ # Replace with:
+		PyModule_AddStringConstant(builtins, "__COMMAND_LINE__", stCmdLine.c_str());
+
+
+// @@@ ## PHASE 5
+// @@@ # Search for:
+		if (!pyLauncher.RunFile("system.py"))
+// @@@ # Replace with:
+#ifdef __USE_CYTHON__
+		if (!pyLauncher.RunLine("import rootlib\nrootlib.moduleImport('system')"))
+#else
+		if (!pyLauncher.RunFile("system.py"))
+#endif
+
+
+
+
+
+

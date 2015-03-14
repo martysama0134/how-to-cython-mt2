@@ -27,3 +27,8 @@
 *.out
 *.app
 /.project
+
+# Python
+*.pyc
+*.pyo
+*.pyd
