@@ -90,7 +90,6 @@ def run(moduleLst, libname):
 	initSource.write('	{\n')
 	initSource.write('		PyObject* retSubString = PyString_FromString(%s_init_methods[i].func_name);\n' % libname)
 	initSource.write('		PyTuple_SetItem(retTuple, i, retSubString);\n')
-	initSource.write('		Py_DECREF(retSubString);\n')
 	initSource.write('	}\n')
 	initSource.write('	return retTuple;\n')
 	initSource.write('}\n')
