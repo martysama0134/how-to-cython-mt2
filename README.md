@@ -213,7 +213,7 @@ undeclared name not builtin: TRUE
 undeclared name not builtin: MONETARY_UNIT0
 ```
 >
-> How can I solve them?
+> Can I solve them?
 
 ###A9
 Yes, and no:
