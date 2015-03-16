@@ -33,7 +33,7 @@
 ### ROOTLIB OUTSIDE THE METIN2LAUNCHER PROJECT AND LOADED AS PYD
 1) Read the content of the HOW-TO-CYTHON-PYD-TUT.txt file
 2) Read the content of the HOW-TO-CYTHON-USERINTERFACE-CPP-EDITS.txt file
-	NB: You should not include the .h and .cpp files specified in the PHASE 1
+	NB: You should not include the .h and .cpp files specified in the PHASE 1, and skip the PHASE 2
 3) Copy rootlib.pyd inside the client\lib path
 4) Run the launcher
 *launcher with rootlib as pyd successfully started*

@@ -1,0 +1,40 @@
+#### Tutorial made by martysama0134/lollo_9_1 ####
+
+### REQUIREMENTS
+1) Python2.7 https://www.python.org/download/releases/2.7/
+2) Visual Studio (Express/Ultimate) 2008, 2010, 2012 or 2013
+
+### CONFIG OPTIONS CHECK
+1) Adjust the compiler path variables (VSINSTALLDIR, VCINSTALLDIR) inside MakeFile_VC_Release.bat
+2) Adjust the python path variables (PYTHONLIBSPATH, PYTHONINCLUDEPATH) inside MakeFile_VC_Release.bat
+
+### UISCRIPTLIB COMPILING
+1) Copy all your uiscript\*.py files into the .\UiMain\UiScriptLib folder
+2) Copy python.exe, UiScriptLibCythonizer.bat, and UiScriptLibCythonizer.py from .\UiMain into the .\UiMain\UiScriptLib folder
+3) Run .\UiMain\UiScriptLib\UiScriptLibCythonizer.bat
+4) Put MakeFile_VC_Release.bat inside the .\UiMain\UiScriptLib\cyTemp folder and run it
+*uiscriptlib.lib successfully compiled*
+
+### UISCRIPTLIB INSIDE THE METIN2LAUNCHER PROJECT
+1) Make a copy of the following files:
+	.\UiMain\UiScriptLib\PythonuiscriptlibManager.h
+	.\UiMain\UiScriptLib\PythonuiscriptlibManager.cpp
+	.\UiMain\UiScriptLib\cyTemp\uiscriptlib.lib
+2) Include the files PythonuiscriptlibManager.h, PythonuiscriptlibManager.cpp in the UserInterface project
+3) Copy the uiscriptlib.lib file into the Extern\lib folder
+4) Read the content of the HOW-TO-EXTRA-CYTHON-USERINTERFACE-CPP-EDITS.txt file
+5) Build
+*launcher with cython successfully compiled*
+
+### UISCRIPTLIB OUTSIDE THE METIN2LAUNCHER PROJECT AND LOADED AS PYD
+1) Read the content of the HOW-TO-EXTRA-CYTHON-PYD-TUT.txt file
+2) Read the content of the HOW-TO-EXTRA-CYTHON-USERINTERFACE-CPP-EDITS.txt file
+	NB: You should not include the .h and .cpp files specified in the PHASE 1, and skip the PHASE 2
+3) Copy uiscriptlib.pyd inside the client\lib path
+4) Run the launcher
+*launcher with uiscriptlib as pyd successfully started*
+
+### GENERAL INFO
+-) uiscriptlib.lib (Debug) -> 20mb
+-) uiscriptlib.lib (Release) -> 10mb
+

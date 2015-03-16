@@ -1,0 +1,19 @@
+#### Tutorial made by martysama0134/lollo_9_1 ####
+
+1) Create a new dll project from visual studio (e.g. called "uiscriptlib")
+2) Include PythonuiscriptlibManager.cpp, PythonuiscriptlibManager.h in the project
+3) Copy uiscriptlib.lib in the project folder
+4) From Properties, set Configuration as "All Configurations"
+    and change the following values inside Configuration Properties:
+General
+	Target Extension = .pyd
+C/C++ -> General
+	Additional Include Directories = C:\Program Files %28x86%29\Python27\include;%(AdditionalIncludeDirectories)
+C/C++ -> Preprocessor
+	WIN32;inituiscriptlibManager=inituiscriptlib;<different options>
+Linker -> General
+	Additional Library Directories = C:\Program Files %28x86%29\Python27\libs;%(AdditionalLibraryDirectories)
+Linker -> Command Line
+	Additional Options = /export:inituiscriptlib
+5) Build
+
