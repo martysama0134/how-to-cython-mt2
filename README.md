@@ -11,7 +11,7 @@ Actually, Cython only converts those files to pure CPython code.
 
    We can always disassemble the launcher with IDA, but the result will be pseudo-c code after waiting 6-8h of analyzing.
 
- - Since we're not using *.pyx files but directly *.py ones, there's no "so much optimization".
+ - Since we're not using **.pyx** files but directly **.py** ones, there's no "so much optimization".
 
    At least, 10% of performance increasing is guaranteed.
 
@@ -34,9 +34,15 @@ Such archive contains the following things:
 
  - Main\ -> It contains all the required files to build the rootlib.lib file
 
- - Main\HOW-TO-CYTHON.txt -> A complete tutorial of everything you need to do (and list of issues)
+ - Main\HOW-TO-CYTHON.txt -> A complete tutorial of everything you need to do for rootlib (and list of issues)
 
- - Extra\root\system.py -> From the official cn's root dated 2014/01/01 with the cython implementation inside
+ - UiMain\ -> It contains all the required files to build the uiscriptlib.lib file
+
+ - UiMain\HOW-TO-EXTRA-CYTHON.txt -> A complete tutorial of everything you need to do for uiscriptlib
+
+ - Extra\root\system.py -> From the official cn's root dated 2014/01/01 with the cython implementation inside (for rootlib)
+
+ - Extra\root\ui.py -> From the official cn's root dated 2014/01/01 with the "extra" cython implementation inside (for uiscriptlib)
 
  - Extra\rootlibpyd\ -> A sample project to build your own rootlib.pyd
 
@@ -57,11 +63,15 @@ Such archive contains the following things:
 
 [![Video Label](http://img.youtube.com/vi/iMt0SiO3sQI/0.jpg)](http://www.youtube.com/watch?v=iMt0SiO3sQI)
 
+> [How-To] Metin2 & Cython - Part 3 - Build uiscriptlib and use it as PYD
+
+[![Video Label](http://img.youtube.com/vi/gdoD7YdCVQ0/0.jpg)](http://www.youtube.com/watch?v=gdoD7YdCVQ0)
+
 
 ## FAQs
 
 ###Q1
-> I think you should make a guide of how to repair the errors given by the *.py files when you are cythonicing, since a lot of people don't know what to do in these cases.
+> I think you should make a guide of how to repair the errors given by the **.py** files when you are cythonicing, since a lot of people don't know what to do in these cases.
 
 ###A1
 The only two errors you could get when you compile your root are:
@@ -176,7 +186,7 @@ You haven't specified the right python path.
 
 You have two solutions based on how your source files are written:
 
-- You can easily copy the one used by ScriptLib into the Python<module>Manager.cpp file like this:
+- You can easily copy the one used by ScriptLib into the Python<modulename>Manager.cpp file like this:
 
   ```
 .\Srcs\Client>findstr /SC:"Python.h" *.h *.cpp
@@ -194,3 +204,22 @@ C/C++ -> General
 Linker -> General
 	Additional Library Directories = YOURPYTHONLIBSPATH
   ```
+
+###Q9
+> When I cythonize the root files, I get warnings like these:
+>
+> ```
+undeclared name not builtin: TRUE
+undeclared name not builtin: MONETARY_UNIT0
+```
+>
+> How can I solve them?
+
+###A9
+Yes, and no:
+
+Those variables are defined by the launcher itself, and Cython can't fittingly detect what kind of "python objects" they are.
+
+Actually, there's just a way applicable only to TRUE and FALSE:
+
+You can gain a bit of performance if you replace TRUE with True and FALSE with False in all the **.py** files.
