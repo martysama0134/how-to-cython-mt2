@@ -22,6 +22,7 @@ bool __IS_TEST_SERVER_MODE__=false;
 	initServerStateChecker();
 // @@@ # Paste below:
 #ifdef __USE_CYTHON__
+	// don't add this line if you're implementing cython via .pyd:
 	initrootlibManager();
 #endif
 

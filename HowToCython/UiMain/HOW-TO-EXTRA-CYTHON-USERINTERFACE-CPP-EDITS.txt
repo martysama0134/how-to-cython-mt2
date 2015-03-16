@@ -24,10 +24,12 @@
 // @@@ ## PHASE 2
 // @@@ # Search for:
 #ifdef __USE_CYTHON__
+	// don't add this line if you're implementing cython via .pyd:
 	initrootlibManager();
 #endif
 // @@@ # Paste below:
 #ifdef __USE_EXTRA_CYTHON__
+	// don't add this line if you're implementing cython via .pyd:
 	inituiscriptlibManager();
 #endif
 
