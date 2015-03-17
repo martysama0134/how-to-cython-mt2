@@ -218,7 +218,7 @@ undeclared name not builtin: MONETARY_UNIT0
 ###A9
 Yes, and no:
 
-Those variables are defined by the launcher itself, and Cython can't fittingly detect what kind of "python objects" they are.
+Those variables are defined by the launcher itself, and Cython can't detect what kind of "python objects" they are.
 
 Actually, there's just a way applicable only to TRUE and FALSE:
 
