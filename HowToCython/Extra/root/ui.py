@@ -2765,7 +2765,37 @@ class PythonScriptLoader(object):
 		self.ScriptDictionary["DRAGON_SOUL_EQUIPMENT_SLOT_START"] = player.DRAGON_SOUL_EQUIPMENT_SLOT_START
 		self.ScriptDictionary["LOCALE_PATH"] = app.GetLocalePath()
 
+		if __USE_EXTRA_CYTHON__:
+			# sub functions
+			from os.path import splitext as op_splitext, basename as op_basename, dirname as op_dirname
+			def GetModName(filename):
+				return op_splitext(op_basename(filename))[0]
+			def IsInUiPath(filename):
+				def ICmp(s1, s2):
+					return s1.lower() == s2.lower()
+				return ICmp(op_dirname(filename), "uiscript")
+			# module name to import
+			modname = GetModName(FileName)
+			# lazy loading of uiscriptlib
+			import uiscriptlib
+			# copy scriptdictionary stuff to builtin scope (otherwise, import will fail)
+			tpl2Main = (
+				"SCREEN_WIDTH","SCREEN_HEIGHT",
+				"PLAYER_NAME_MAX_LEN", "DRAGON_SOUL_EQUIPMENT_SLOT_START","LOCALE_PATH"
+			)
+			import __builtin__ as bt
+			for idx in tpl2Main:
+				tmpVal = self.ScriptDictionary[idx]
+				exec "bt.%s = tmpVal"%idx in globals(), locals()
+			# debug stuff
+			import dbg
+			dbg.TraceError("Loading %s (%s %s)"%(FileName, GetModName(FileName), IsInUiPath(FileName)))
 		try:
+			if __USE_EXTRA_CYTHON__ and IsInUiPath(FileName) and uiscriptlib.isExist(modname):
+				m1 = uiscriptlib.moduleImport(modname)
+				self.ScriptDictionary["window"] = m1.window.copy()
+				del m1
+			else:
 			sandbox.execfile(FileName, self.ScriptDictionary)
 		except IOError, err:
 			import sys
