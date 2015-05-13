@@ -2796,7 +2796,7 @@ class PythonScriptLoader(object):
 				self.ScriptDictionary["window"] = m1.window.copy()
 				del m1
 			else:
-			sandbox.execfile(FileName, self.ScriptDictionary)
+				sandbox.execfile(FileName, self.ScriptDictionary)
 		except IOError, err:
 			import sys
 			import dbg
