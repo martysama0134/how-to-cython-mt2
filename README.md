@@ -203,7 +203,7 @@ You have two solutions based on how your source files are written:
 * You can easily copy the one used by ScriptLib into the Python<modulename>Manager.cpp file like this:
 
   ```cpp
-  ^\Srcs\Client$ findstr /SC:"Python.h" *.h *.cpp
+  ^\Srcs\Client $ findstr /SC:"Python.h" *.h *.cpp
   ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
   ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
   UserInterface\PythonrootlibManager.cpp:#include "../../Extern/Python27/Python.h"
