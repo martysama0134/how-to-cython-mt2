@@ -82,7 +82,9 @@ The only two errors you could get when you compile your root are:
 
   You can also specify the charset to use just adding something like this at the beginning of the .py file:
 
-  ```# -*- coding: cp1256 -*-```
+  ```python
+  # -*- coding: cp1256 -*-
+  ```
 
   _Note: cp1256 = arabic charset! (change it with the one you actually use!)_
 
@@ -120,7 +122,9 @@ You have few solutions:
 
 * Add something like this at the beginning of the MakeFile_VC_Release.bat file and run it as administrator: (easy way)
 
-```call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"```
+```shell
+call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
+```
 
 * You should run as admininistrator the "Visual Studio Command Prompt (2010)" and then recall the .bat from there. (highly preferable)
 
@@ -146,11 +150,15 @@ If the module you want to include is not present in the rootlib one, the client 
 ### A5
 Open system.py, below this:
 
-` __builtins__.new_open = open `
+```python
+__builtins__.new_open = open
+```
 
 add:
 
-` __builtins__.pack_open = open `
+```python
+__builtins__.pack_open = open
+```
 
 ---
 ### Q6
@@ -162,16 +170,17 @@ Yes, the python27.dll, and the \lib folder are still required.
 ---
 ### Q7
 > When I try to log in the game, my client crash with the following error:
-
-> ` networkModule.SetSelectCharacterPhase - <type 'exceptions.ImportError'>:No module named uiSelectItem `
+```python
+networkModule.SetSelectCharacterPhase - <type 'exceptions.ImportError'>:No module named uiSelectItem
+```
 
 ### A7
 With the default-cython code, uiSelectItem is not uiselectitem! (case-sensitive check)
 
 On the newer root, it's typed and used in lowercase:
 
-```
-.\pack\root>findstr /SC:"uiselectitem" *
+```shell
+^\pack\root $ findstr /SC:"uiselectitem" *
 interfacemodule.py:import uiselectitem
 interfacemodule.py:             self.wndItemSelect = uiselectitem.SelectItemWindow()
 ```
@@ -193,8 +202,8 @@ You have two solutions based on how your source files are written:
 
 * You can easily copy the one used by ScriptLib into the Python<modulename>Manager.cpp file like this:
 
-  ```
-  .\Srcs\Client>findstr /SC:"Python.h" *.h *.cpp
+  ```cpp
+  ^\Srcs\Client$ findstr /SC:"Python.h" *.h *.cpp
   ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
   ScriptLib\StdAfx.h:     #include "../../Extern/Python27/Python.h"
   UserInterface\PythonrootlibManager.cpp:#include "../../Extern/Python27/Python.h"
