@@ -1,3 +1,14 @@
+
+---
+# Table of Contents
+
+* [Intro](#intro)
+* [Is Cython really worth it?](#is-cython-really-worth-it)
+* [Download](#download)
+* [VideoTutorial](#videotutorial)
+* [FAQs](#faqs)
+
+---
 ## Intro
 This repository will explain how to "convert" your root .py files to .c ones.
 
