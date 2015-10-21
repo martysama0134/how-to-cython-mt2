@@ -247,3 +247,22 @@ Those variables are defined by the launcher itself, and Cython can't detect what
 Actually, there's just a way applicable only to TRUE and FALSE:
 
 You can gain a bit of performance if you replace TRUE with True and FALSE with False in all the **.py** files.
+
+---
+### Q10
+> When I compile the root files, I get such an error:
+```
+C:\Python27\include\pyconfig.h(227): Cannot open include file: 'basetsd.h'
+```
+> What should I do?
+
+### A10
+You have two solutions for this:
+
+* Following the [Q&A 3](#a3)
+
+* Remove from C:\Python27\include\pyconfig.h the following line:
+ ```cpp
+ #include <basetsd.h>"
+ ```
+
