@@ -3,18 +3,21 @@
 @REM @SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0
 @REM @SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC
 @REM ## vs2010 10.0
+@REM @CALL "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
 @SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0
 @SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC
 @REM ## vs2012 11.0
+@REM @CALL "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat"
 @REM @SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 11.0
 @REM @SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC
 @REM ## vs2013 12.0
+@REM @CALL "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
 @REM @SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0
 @REM @SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
 
 @REM ### Python Folder
-@SET PYTHONLIBSPATH=C:\Program Files (x86)\Python27\libs
-@SET PYTHONINCLUDEPATH=C:\Program Files (x86)\Python27\include
+@SET PYTHONLIBSPATH=C:\Python27\libs
+@SET PYTHONINCLUDEPATH=C:\Python27\include
 
 @SET FrameworkDir=Framework32
 @SET FrameworkVersion=v2.0.50727

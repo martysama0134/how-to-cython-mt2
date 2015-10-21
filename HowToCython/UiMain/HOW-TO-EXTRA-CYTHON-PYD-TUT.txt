@@ -8,11 +8,11 @@
 General
 	Target Extension = .pyd
 C/C++ -> General
-	Additional Include Directories = C:\Program Files %28x86%29\Python27\include;%(AdditionalIncludeDirectories)
+	Additional Include Directories = C:\Python27\include;%(AdditionalIncludeDirectories)
 C/C++ -> Preprocessor
 	WIN32;inituiscriptlibManager=inituiscriptlib;<different options>
 Linker -> General
-	Additional Library Directories = C:\Program Files %28x86%29\Python27\libs;%(AdditionalLibraryDirectories)
+	Additional Library Directories = C:\Python27\libs;%(AdditionalLibraryDirectories)
 Linker -> Command Line
 	Additional Options = /export:inituiscriptlib
 5) Build
