@@ -94,10 +94,12 @@ The only two errors you could get when you compile your root are:
   You can also specify the charset to use just adding something like this at the beginning of the .py file:
 
   ```python
-  # -*- coding: cp1256 -*-
+  # -*- coding: cp1252 -*-
   ```
 
-  _Note: cp1256 = arabic charset! (change it with the one you actually use!)_
+  _Note: cp1252 = latin1 charset! (save the document as ansi)_
+  _Note: cp1256 = arabic charset! (save the document as ansi)_
+  _Note: utf-8 = unicode charset! (save the document as unicode w/o BOM)_
 
 * "Expected an increase in indentation level" or similar
 
