@@ -99,11 +99,11 @@ The only two errors you could get when you compile your root are:
 
   _Note:
   
-    cp1252 = latin1 charset! (save the document as ansi)_
+    * cp1252 = latin1 charset! (save the document as ansi)_
 
-    cp1256 = arabic charset! (save the document as ansi)_
+    * cp1256 = arabic charset! (save the document as ansi)_
 
-    utf-8 = unicode charset! (save the document as unicode w/o BOM)_
+    * utf-8 = unicode charset! (save the document as unicode w/o BOM)_
 
 * "Expected an increase in indentation level" or similar
 
