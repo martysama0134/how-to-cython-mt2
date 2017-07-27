@@ -1,5 +1,5 @@
 
----
+------------------------------------------
 # Table of Contents
 
 * [Intro](#intro)
@@ -8,14 +8,14 @@
 * [VideoTutorial](#videotutorial)
 * [FAQs](#faqs)
 
----
+------------------------------------------
 ## Intro
 This repository will explain how to "convert" your root .py files to .c ones.
 
 Actually, Cython only converts those files to pure CPython code.
 
 
----
+------------------------------------------
 ## Is Cython really worth it?
 
 * Pros
@@ -37,7 +37,7 @@ Actually, Cython only converts those files to pure CPython code.
 
       If you directly use a .pyd (still 10mb), the launcher's size won't increase.
 
----
+------------------------------------------
 ## Download
 
 [HowToCython.zip](https://github.com/martysama0134/how-to-cython-mt2/archive/master.zip)
@@ -57,7 +57,7 @@ Such archive contains the following things:
     * rootlibpyd\ -> A sample project to build your own rootlib.pyd
     * uiscriptlibpyd\ -> A sample project to build your own uiscriptlib.pyd
 
----
+------------------------------------------
 ## VideoTutorial
 
 > [How-To] Metin2 & Cython - Part 1 - Build rootlib
@@ -76,7 +76,7 @@ Such archive contains the following things:
 
 [![Video Label](http://img.youtube.com/vi/gdoD7YdCVQ0/0.jpg)](http://www.youtube.com/watch?v=gdoD7YdCVQ0)
 
----
+------------------------------------------
 ## FAQs
 
 ### Q1
@@ -111,7 +111,7 @@ The only two errors you could get when you compile your root are:
 
   It's clear that you won't be able to compile unworkable/unrunnable/broken .py files.
 
----
+------------------------------------------
 ### Q2
 > Can you cythonize all the python files of the client? I mean really each py file, including every script.
 
@@ -122,7 +122,7 @@ The easier one, using cython, would be making a "uiscriptlib" library, and re-wr
 
 _Note: The "uiscriptlib" code has been added inside UiMain/!_
 
----
+------------------------------------------
 ### Q3
 > When I run the MakeFile_VC_Release.bat file, I get the following errors:
 ```
@@ -147,7 +147,7 @@ call "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
 
 _Note: I've used vs2010, but it works without any problems with any visual studio version._
 
----
+------------------------------------------
 ### Q4
 > Do I really have to compile all the root files or not?
 >
@@ -158,7 +158,7 @@ If you use the files as "they are", only system.py and prototype.py are required
 
 If the module you want to include is not present in the rootlib one, the client will try to open the relative **modulename**.py file.
 
----
+------------------------------------------
 ### Q5
 > How do I fix the following error when I open the client?
 
@@ -177,14 +177,14 @@ add:
 __builtins__.pack_open = open
 ```
 
----
+------------------------------------------
 ### Q6
 > When cythonized, is there still need dynamic linking e.g: python27.dll or library files?
 
 ### A6
 Yes, the python27.dll, and the \lib folder are still required.
 
----
+------------------------------------------
 ### Q7
 > When I try to log in the game, my client crash with the following error:
 ```python
@@ -206,7 +206,7 @@ You can replace uiSelectItem with uiselectitem in the interfacemodule.py.
 
 _Note: Try to re-cythonize your files again with the last how-to-cython-mt2 version_
 
----
+------------------------------------------
 ### Q8
 > When I compile the launcher with rootlib inside, I get this error:
 
@@ -226,6 +226,10 @@ You have two solutions based on how your source files are written:
   UserInterface\PythonrootlibManager.cpp:#include "../../Extern/Python27/Python.h"
   ```
 
+  Example:
+  
+  In `PythonrootlibManager.cpp`, replace `#include "Python.h"` with `#include "../../Extern/Python27/Python.h"`
+
 * You can specify the right path from the project's Properties: (you should at least know what you're doing)
   ```
   From Properties, set Configuration as "All Configurations"
@@ -236,7 +240,7 @@ You have two solutions based on how your source files are written:
       Additional Library Directories = YOURPYTHONLIBSPATH
   ```
 
----
+------------------------------------------
 ### Q9
 > When I cythonize the root files, I get warnings like these:
 ```
@@ -254,7 +258,7 @@ Actually, there's just a way applicable only to TRUE and FALSE:
 
 You can gain a bit of performance if you replace TRUE with True and FALSE with False in all the **.py** files.
 
----
+------------------------------------------
 ### Q10
 > When I compile the root files, I get such an error:
 ```
@@ -271,4 +275,29 @@ You have two solutions for this:
  ```cpp
  #include <basetsd.h>"
  ```
+
+------------------------------------------
+### Q11
+> When I compile the launcher with rootlib inside, I get this error:
+
+> `cannot open file `python27.lib`
+
+(marty files only)
+
+### A11
+You have to go inside `^/Srcs/Extern/Python2/libs` and duplicate `python2.lib` to `python27.lib` (you must have both)
+
+------------------------------------------
+### Q12
+> When I compile the launcher with rootlib inside, I get an error like this:
+```
+one or more multiply defined symbols found
+"struct rootlib_SMethodDef * rootlib_init_methods" (?rootlib_init_methods@@3PAUrootlib_SMethodDef@@A) already defined in PythonrootlibManager.obj
+"struct uiscriptlib_SMethodDef * uiscriptlib_init_methods" (?uiscriptlib_init_methods@@3PAUuiscriptlib_SMethodDef@@A) already defined in PythonuiscriptlibManager.obj
+```
+
+### A12
+You have included the (e.g.) `PythonrootlibManager.cpp` file in the repository's project files but also included it as .cpp
+
+Inside `^/Srcs/Client/UserInterface/UserInterface.cpp`, replace `#include "PythonrootlibManager.cpp"` with `//#include "PythonrootlibManager.cpp"` (so just comment the line).
 
