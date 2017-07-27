@@ -228,7 +228,7 @@ You have two solutions based on how your source files are written:
 
   Example:
   
-  In `PythonrootlibManager.cpp`, replace `#include "Python.h"` with `#include "../../Extern/Python27/Python.h"`
+  In `PythonrootlibManager.cpp`, replace `#include "Python.h"` with `#include "../../Extern/Python27/Python.h"` (marty files only)
 
 * You can specify the right path from the project's Properties: (you should at least know what you're doing)
   ```
