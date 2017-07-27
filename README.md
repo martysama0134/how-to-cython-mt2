@@ -280,7 +280,7 @@ You have two solutions for this:
 ### Q11
 > When I compile the launcher with rootlib inside, I get this error:
 
-> `cannot open file `python27.lib`
+> `cannot open file python27.lib`
 
 (marty files only)
 
