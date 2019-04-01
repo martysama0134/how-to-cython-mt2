@@ -46,7 +46,7 @@ bool __IS_TEST_SERVER_MODE__=false;
 	}
 // @@@ # Replace with:
     PyObject * builtins = PyImport_ImportModule("__builtin__");
-#ifdef _DISTRIBUTE
+#ifdef _NDEBUG
 	PyModule_AddIntConstant(builtins, "__DEBUG__", 0);
 #else
 	PyModule_AddIntConstant(builtins, "__DEBUG__", 1);
