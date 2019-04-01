@@ -12,7 +12,7 @@
 
 	https://visualstudio.microsoft.com/it/downloads/
 
-4. From Visual Studio Installer, specify just the "desktop c++" environment like [this](https://i.imgur.com/tCOX2ui.png) (mfc/atl not needed) and install it
+4. From Visual Studio Installer, specify just the "desktop c++" environment like [this](https://i.imgur.com/tCOX2ui.png) (mfc/atl/cmake not needed) and install it
 
 5. In `C:\Python27\Lib\distutils\msvc9compiler.py` replace the whole `find_vcvarsall` function with this:
 
@@ -20,7 +20,7 @@
 	def find_vcvarsall(version):
 	    return r"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat" #or vcvarsall.bat
 	```
-	_Note: using 4 spaces instead of 1 tab for indentation._
+	_Note: use 4 spaces instead of 1 tab for indentation._
 
 6. Open cmd, and write:
 	```batch
