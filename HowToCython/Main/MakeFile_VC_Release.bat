@@ -15,6 +15,10 @@ REM ## vs2013 12.0
 REM CALL "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat"
 REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0
 REM SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
+REM ## vs2017 15.0
+REM CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat"
+REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
+REM SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC
 
 REM ### Python Folder
 SET PYTHONLIBSPATH=C:\Python27\libs
