@@ -29,3 +29,15 @@
 	python -m pip install --upgrade pip
 	pip install cython
 	```
+
+7. Go to your python folder (e.g. pack/root) and write:
+	```batch
+	cd pack\root
+	cythonize -2 --lenient -i *.py
+	```
+
+	It will generate .c and .pyd of each .py file.
+
+	In case of "Decoding error", append at the beginning of the .py file `#coding=949` to solve the issue.
+
+
