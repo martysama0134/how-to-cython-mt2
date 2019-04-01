@@ -36,7 +36,7 @@
 	cythonize -2 --lenient -i *.py
 	```
 
-	It will generate .c and .pyd of each .py file.
+	It will generate .c and .pyd of each .py file. [#1](https://i.imgur.com/rhqinib.png) [#2](https://i.imgur.com/TUYDgPa.png)
 
 	In case of "Decoding error", append at the beginning of the .py file `#coding=949` to solve the issue.
 
