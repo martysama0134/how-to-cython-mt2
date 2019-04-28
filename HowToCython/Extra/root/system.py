@@ -141,7 +141,7 @@ def __hybrid_import(name,globals=None,locals=None,fromlist=None, level=-1):
 	else:
 		filename = name + '.py'
 
-		if not __USE_CYTHON__ and pack.Exist(filename):
+		if pack.Exist(filename):
 			if name in sys.modules:
 				dbg.Tracen('importing from sys.modules %s' % name)
 				return sys.modules[name]
@@ -206,9 +206,9 @@ def execfile(fileName, dict):
 import __builtin__
 __builtin__.__import__ = __hybrid_import
 
-# cythonÀÇ ¹ö±×·Î... ¿ÜºÎ ¸ğµâÀÇ __dict__¸¦ ¼öÁ¤ÇÏ¿©, ¸ğµâ¿¡ ¿ø·¡ ÀÖ´Â object¸¦ ¼öÁ¤ÇØºÁ¾ß ÇØ´ç ¸ğµâ ³»¿¡¼­ ¹Ù²ï object°¡ Àû¿ëµÇÁö ¾Ê´Â´Ù.
-#	module_do´Â ¿ÜºÎ ¸ğµâÀÇ execfile object¸¦ __builtin__.execfile¿¡¼­ system.execfile·Î Ä¡È¯ÇÏ´Â ÀÛ¾÷À» ÇÏ´Âµ¥ °ø¿°ºÒÀÌ´Ù...(¿ÜºÎ ¸ğµâÀº __builtin__.execfileÀ» ¾µ »ÓÀÌ´Ù.)
-#	µû¶ó¼­ __builtin__.execfileÀ» system.execfile·Î Ä¡È¯ÇØ¹ö¸²...
+# cythonì˜ ë²„ê·¸ë¡œ... ì™¸ë¶€ ëª¨ë“ˆì˜ __dict__ë¥¼ ìˆ˜ì •í•˜ì—¬, ëª¨ë“ˆì— ì›ë˜ ìˆëŠ” objectë¥¼ ìˆ˜ì •í•´ë´ì•¼ í•´ë‹¹ ëª¨ë“ˆ ë‚´ì—ì„œ ë°”ë€ objectê°€ ì ìš©ë˜ì§€ ì•ŠëŠ”ë‹¤.
+#	module_doëŠ” ì™¸ë¶€ ëª¨ë“ˆì˜ execfile objectë¥¼ __builtin__.execfileì—ì„œ system.execfileë¡œ ì¹˜í™˜í•˜ëŠ” ì‘ì—…ì„ í•˜ëŠ”ë° ê³µì—¼ë¶ˆì´ë‹¤...(ì™¸ë¶€ ëª¨ë“ˆì€ __builtin__.execfileì„ ì“¸ ë¿ì´ë‹¤.)
+#	ë”°ë¼ì„œ __builtin__.execfileì„ system.execfileë¡œ ì¹˜í™˜í•´ë²„ë¦¼...
 #module_do = exec_add_module_do
 __builtin__.old_execfile = __builtin__.execfile
 __builtin__.execfile = execfile
@@ -307,7 +307,7 @@ loginMark = "-cs"
 
 app.__COMMAND_LINE__ = __COMMAND_LINE__
 if __USE_CYTHON__:
-	#import ÇÏ´Â°Ô ½ÇÇàÀÌ¶ó´Ï... ¾à°£¤´ °°Áö¸¸...
+	#import í•˜ëŠ”ê²Œ ì‹¤í–‰ì´ë¼ë‹ˆ... ì•½ê°„ã…„ ê°™ì§€ë§Œ...
 	import __main__
 	__hybrid_import('Prototype', __main__.__dict__)
 else:
