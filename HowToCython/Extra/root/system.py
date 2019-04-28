@@ -152,11 +152,9 @@ def __hybrid_import(name,globals=None,locals=None,fromlist=None, level=-1):
 
 			module_do(newmodule)
 			return newmodule
-			#return imp.load_module(name, pack_file(filename,'r'),filename,('.py','r',imp.PY_SOURCE))
 		else:
 			dbg.Tracen('importing from lib %s' % name)
 			return old_import(name,globals,locals,fromlist)#, level)
-			#return old_import(name,globals,locals,fromlist)
 
 def splitext(p):
 	root, ext = '', ''
@@ -206,52 +204,8 @@ def execfile(fileName, dict):
 import __builtin__
 __builtin__.__import__ = __hybrid_import
 
-# cython의 버그로... 외부 모듈의 __dict__를 수정하여, 모듈에 원래 있는 object를 수정해봐야 해당 모듈 내에서 바뀐 object가 적용되지 않는다.
-#	module_do는 외부 모듈의 execfile object를 __builtin__.execfile에서 system.execfile로 치환하는 작업을 하는데 공염불이다...(외부 모듈은 __builtin__.execfile을 쓸 뿐이다.)
-#	따라서 __builtin__.execfile을 system.execfile로 치환해버림...
-#module_do = exec_add_module_do
 __builtin__.old_execfile = __builtin__.execfile
 __builtin__.execfile = execfile
-
-"""
-#
-# PSYCO installation (must move to system.py, systemrelease.pyc)
-#
-try:
-	import psyco
-	#from psyco.classes import *
-
-	def bind_me(bindable_list):
-		try:
-			for x in bindable_list:
-				try:
-					psyco.bind(x)
-				except:
-					pass
-		except:
-			pass
-
-	_prev_psyco_old_module_do = module_do
-	def module_bind(module):
-		_prev_psyco_old_module_do(module)
-		#print 'start binding' + str(module)
-		try:
-			psyco.bind(module)
-		except:
-			pass
-		for x in module.__dict__.itervalues():
-			try:
-				psyco.bind(x)
-			except:
-				pass
-		#print 'end binding'
-
-	dbg.Trace("PSYCO installed\\n")
-
-except Exception, msg:
-	bind_me = lambda x:None
-	dbg.Trace("No PSYCO support : %s\\n" % msg)
-"""
 
 def GetExceptionString(excTitle):
 	(excType, excMsg, excTraceBack)=sys.exc_info()
@@ -307,7 +261,6 @@ loginMark = "-cs"
 
 app.__COMMAND_LINE__ = __COMMAND_LINE__
 if __USE_CYTHON__:
-	#import 하는게 실행이라니... 약간ㅄ 같지만...
 	import __main__
 	__hybrid_import('Prototype', __main__.__dict__)
 else:
