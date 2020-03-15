@@ -5,8 +5,8 @@ REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0
 REM SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC
 REM ## vs2010 10.0
 REM CALL "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\vcvarsall.bat"
-SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0
-SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC
+REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0
+REM SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC
 REM ## vs2012 11.0
 REM CALL "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat"
 REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio 11.0
@@ -19,6 +19,10 @@ REM ## vs2017 15.0
 REM CALL "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat"
 REM SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community
 REM SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC
+REM ## vs2019
+CALL "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
+SET VSINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community
+SET VCINSTALLDIR=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC
 
 REM ### Python Folder
 SET PYTHONLIBSPATH=C:\Python27\libs
