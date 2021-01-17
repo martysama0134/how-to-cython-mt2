@@ -1,8 +1,9 @@
 from sys import path as sys_path
 from os.path import splitext as op_splitext
 
-libpath = r'..\..\CRootLib\Workplace\Py2Lib\lib'
+libpath = r'..\..\..\CRootLib\Workplace\Py2Lib\lib'
 sys_path.append(libpath)
+rootpath = r'..\..\..\CRootLib\Workplace'
 rootpath = r'.'
 
 capNameList = {

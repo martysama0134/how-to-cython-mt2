@@ -109,8 +109,8 @@ call 3_CompileRootLib.bat
     <PreBuildEvent>
       <Message>Executes the cythonizer!</Message>
       <Command>cd $(ProjectDir)\Workplace\
-call 2_CopyRootIntoRootLib.bat
-call 3_CompileRootLib.bat
+call 2_CopyUiscriptIntoUiscriptLib.bat
+call 3_CompileUiScriptLib.bat
 </Command>
     </PreBuildEvent>
     <Bscmake>
