@@ -9,3 +9,6 @@
 ### Common issues
 #### Q: Nothing to do
 A: If the cythonization event doesn't start, touch a random .cpp file and re-run the solution compilation.
+
+#### Q: Python27 not found
+A: Duplicate the Extern/Python2 folder to Python27 and duplicate Python2/libs/Python2.lib to Python27.lib
