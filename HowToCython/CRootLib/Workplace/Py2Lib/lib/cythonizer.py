@@ -51,7 +51,7 @@ def run(pys, nthread = 0, outdir = "", tempdir="cyTemp", forceRecompile = False,
 		f.write(data)
 		f.write("\n")
 		f.close()
-		# marty fix: prevent rebuilding the same python file if it didn't change
+		# marty: here i need to set the old mtime to the new one
 		old_mtime = os.stat(fn)
 		os.utime(tempfileName, (old_mtime.st_atime, old_mtime.st_mtime))
 		new_mtime = os.stat(tempfileName)

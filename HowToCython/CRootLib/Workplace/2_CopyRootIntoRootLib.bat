@@ -1,4 +1,4 @@
 @echo off
-copy /y root\*.py RootLib\
+copy /y Root\*.py RootLib\
 echo copy completed
 pause

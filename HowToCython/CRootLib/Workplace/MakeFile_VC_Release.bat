@@ -33,7 +33,7 @@ SET FrameworkVersion=v2.0.50727
 if "%VSINSTALLDIR%"=="" goto error_no_VSINSTALLDIR
 if "%VCINSTALLDIR%"=="" goto error_no_VCINSTALLDIR
 
-echo Setting environment for using Microsoft Visual Studio 2008 x86 tools.
+echo Setting environment for using Microsoft Visual Studio x86 tools.
 
 call :GetWindowsSdkDir
 
@@ -85,5 +85,7 @@ goto end
 set lib=%lib%;%PYTHONLIBSPATH%;
 set include=%include%;%PYTHONINCLUDEPATH%;
 cl /O2 /Ob1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "USE_LOD" /D "_DISTRIBUTE" /D "_VC80_UPGRADE=0x0710" /D "_MBCS" /GF /FD /EHsc /MT /Gy /FAcs /W3 /nologo /c /Zi /MP8 *.c
+REM cl /O2 /Ob1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "USE_LOD" /D "_DISTRIBUTE" /D "_VC80_UPGRADE=0x0710" /D "_MBCS" /GF /FD /EHsc /MT /Gy /FAcs /W3 /nologo /c /Zi /MP8 /Fo"Release\" /Ot /Fp"Release\rootlib.pch" /Fd"Release\CythonRootLib.pdb" *.c
+REM cl /O2 /Ob1 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "USE_LOD" /D "_DISTRIBUTE" /D "_VC80_UPGRADE=0x0710" /D "_MBCS" /GF /FD /EHsc /MT /Gy /FAcs /W3 /nologo /c /Zi /MP8 /MP /FR"" /GS /TC /analyze- /W3 /Gy /Zc:wchar_t /Zi /O2 /Ob1 /Fd"rootlib.pdb" /Zc:inline /fp:precise /D "_CRT_SECURE_NO_WARNINGS" /D "WIN32" /D "NDEBUG" /D "_LIB" /D "_UNICODE" /D "UNICODE" /errorReport:prompt /WX- /Zc:forScope /Gd /Oy /Oi /MT /FC /Fa"" /EHsc /nologo /Fo"" /Ot /Fp"rootlib.pch" /diagnostics:column *.c
 lib /out:.\rootlib.lib *.obj
 pause
