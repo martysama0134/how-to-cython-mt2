@@ -105,6 +105,8 @@ The only two errors you could get when you compile your root are:
 
     * utf-8 = unicode charset! _(save the document as unicode w/o BOM)_
 
+    * You can use this regex (e.g. on notepad++) to find the non-ansi characters: __[^\x00-\x7F]__
+
 * "Expected an increase in indentation level" or similar
 
   This happens when the .py file has a bad tabulation, so bad written:
