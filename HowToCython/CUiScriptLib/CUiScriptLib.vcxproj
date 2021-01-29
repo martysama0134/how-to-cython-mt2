@@ -48,11 +48,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
     <OutDir>$(SolutionDir)UserInterface\</OutDir>
-    <TargetName>rootlib_d</TargetName>
+    <TargetName>uiscriptlib_d</TargetName>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <TargetName>rootlib</TargetName>
+    <TargetName>uiscriptlib</TargetName>
     <OutDir>$(SolutionDir)UserInterface\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
