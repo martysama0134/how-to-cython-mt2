@@ -75,8 +75,8 @@
     </Link>
     <PreBuildEvent>
       <Command>cd $(ProjectDir)\Workplace\
-call 2_CopyRootIntoRootLib.bat
-call 3_CompileRootLib.bat
+call 2_CopyUiscriptIntoUiscriptLib.bat
+call 3_CompileUiScriptLib.bat
 </Command>
       <Message>cythonization event</Message>
     </PreBuildEvent>
