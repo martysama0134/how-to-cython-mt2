@@ -64,7 +64,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\Extern\include\Python27;..\..\extern\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Extern\include\Python27;..\..\Extern\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <CompileAs>CompileAsC</CompileAs>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
