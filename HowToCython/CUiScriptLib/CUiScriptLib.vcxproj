@@ -47,13 +47,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
-    <OutDir>$(SolutionDir)UserInterface\</OutDir>
+    <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <TargetName>uiscriptlib_d</TargetName>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <TargetName>uiscriptlib</TargetName>
-    <OutDir>$(SolutionDir)UserInterface\</OutDir>
+    <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
   </PropertyGroup>
@@ -107,7 +107,7 @@ call 3_CompileUiScriptLib.bat
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PreBuildEvent>
-      <Message>Executes the cythonizer!</Message>
+      <Message>cythonization event</Message>
       <Command>cd $(ProjectDir)\Workplace\
 call 2_CopyUiscriptIntoUiscriptLib.bat
 call 3_CompileUiScriptLib.bat
