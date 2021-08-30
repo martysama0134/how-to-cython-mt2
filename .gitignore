@@ -6,3 +6,4 @@
 *.bak
 
 .vs/
+*.vcxproj.user
