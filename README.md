@@ -97,6 +97,8 @@ The only two errors you could get when you compile your root are:
   # -*- coding: cp1252 -*-
   ```
 
+  Otherwise, you have to remove all the non-ansi characters you can find with the regex `[^\x00-\x7F]`.
+
   Note:
   
     * cp1252 = latin1 charset! _(save the document as ansi)_
