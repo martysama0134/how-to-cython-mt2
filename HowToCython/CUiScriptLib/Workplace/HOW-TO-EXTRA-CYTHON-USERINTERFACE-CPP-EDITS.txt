@@ -9,42 +9,43 @@
 // don't include these two files .h .cpp if you're implementing cython via .pyd
 #include "PythonrootlibManager.h"
 // it would be better including such file in the project, but this is easier at this moment:
-#include "PythonrootlibManager.cpp"
+//#include "PythonrootlibManager.cpp"
 #endif
+
 // @@@ # Paste below:
 #define __USE_EXTRA_CYTHON__
 #ifdef __USE_EXTRA_CYTHON__
 // don't include these two files .h .cpp if you're implementing cython via .pyd
 #include "PythonuiscriptlibManager.h"
 // it would be better including such file in the project, but this is easier at this moment:
-#include "PythonuiscriptlibManager.cpp"
+//#include "PythonuiscriptlibManager.cpp"
 #endif
 
 
 // @@@ ## PHASE 2
 // @@@ # Search for:
-#ifdef __USE_CYTHON__
+	#ifdef __USE_CYTHON__
 	// don't add this line if you're implementing cython via .pyd:
 	initrootlibManager();
-#endif
+	#endif
 // @@@ # Paste below:
-#ifdef __USE_EXTRA_CYTHON__
+	#ifdef __USE_EXTRA_CYTHON__
 	// don't add this line if you're implementing cython via .pyd:
 	inituiscriptlibManager();
-#endif
+	#endif
 
 
 // @@@ ## PHASE 3
 // @@@ # Search for:
-#ifdef __USE_CYTHON__
+	#ifdef __USE_CYTHON__
 	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 1);
-#else
+	#else
 	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 0);
-#endif
+	#endif
 // @@@ # Paste below:
-#ifdef __USE_EXTRA_CYTHON__
+	#ifdef __USE_EXTRA_CYTHON__
 	PyModule_AddIntConstant(builtins, "__USE_EXTRA_CYTHON__", 1);
-#else
+	#else
 	PyModule_AddIntConstant(builtins, "__USE_EXTRA_CYTHON__", 0);
-#endif
+	#endif
 
