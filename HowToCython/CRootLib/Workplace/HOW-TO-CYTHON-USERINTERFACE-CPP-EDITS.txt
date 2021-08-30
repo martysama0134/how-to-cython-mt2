@@ -21,10 +21,10 @@ bool __IS_TEST_SERVER_MODE__=false;
 	initguild();
 	initServerStateChecker();
 // @@@ # Paste below:
-#ifdef __USE_CYTHON__
+	#ifdef __USE_CYTHON__
 	// don't add this line if you're implementing cython via .pyd:
 	initrootlibManager();
-#endif
+	#endif
 
 
 // @@@ ## PHASE 3
@@ -32,11 +32,11 @@ bool __IS_TEST_SERVER_MODE__=false;
 	{
 		std::string stRegisterDebugFlag;
 
-#ifdef _DISTRIBUTE
+		#ifdef _DISTRIBUTE
 		stRegisterDebugFlag ="__DEBUG__ = 0";
-#else
+		#else
 		stRegisterDebugFlag ="__DEBUG__ = 1";
-#endif
+		#endif
 
 		if (!pyLauncher.RunLine(stRegisterDebugFlag.c_str()))
 		{
@@ -46,16 +46,16 @@ bool __IS_TEST_SERVER_MODE__=false;
 	}
 // @@@ # Replace with:
     PyObject * builtins = PyImport_ImportModule("__builtin__");
-#ifdef _NDEBUG
+	#ifdef _NDEBUG
 	PyModule_AddIntConstant(builtins, "__DEBUG__", 0);
-#else
+	#else
 	PyModule_AddIntConstant(builtins, "__DEBUG__", 1);
-#endif
-#ifdef __USE_CYTHON__
+	#endif
+	#ifdef __USE_CYTHON__
 	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 1);
-#else
+	#else
 	PyModule_AddIntConstant(builtins, "__USE_CYTHON__", 0);
-#endif
+	#endif
 
 
 // @@@ ## PHASE 4
@@ -79,11 +79,11 @@ bool __IS_TEST_SERVER_MODE__=false;
 // @@@ # Search for:
 		if (!pyLauncher.RunFile("system.py"))
 // @@@ # Replace with:
-#ifdef __USE_CYTHON__
+		#ifdef __USE_CYTHON__
 		if (!pyLauncher.RunLine("import rootlib\nrootlib.moduleImport('system')"))
-#else
+		#else
 		if (!pyLauncher.RunFile("system.py"))
-#endif
+		#endif
 
 
 
