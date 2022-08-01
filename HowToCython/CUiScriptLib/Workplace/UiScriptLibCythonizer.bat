@@ -1,2 +1,2 @@
-@python.exe UiScriptLibCythonizer.py
+@c:\python27\python.exe UiScriptLibCythonizer.py
 @pause

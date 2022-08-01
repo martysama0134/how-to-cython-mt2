@@ -11,8 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Workplace\RootLib\cyTemp\Prototype.c" />
-    <ClCompile Include="Workplace\RootLib\cyTemp\system.c" />
+    <ClCompile Include="Workplace\UiScriptLib\cyTemp\atlaswindow.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{92AE042A-F9EA-45B9-A036-AF8791B048A8}</ProjectGuid>
@@ -46,7 +45,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Python27\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <TargetName>uiscriptlib_d</TargetName>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
@@ -56,6 +55,7 @@
     <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <IncludePath>C:\Python27\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,6 +80,13 @@ call 3_CompileUiScriptLib.bat
 </Command>
       <Message>cythonizing uiscript</Message>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.c
+echo # &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.py</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Touching CUiScriptLib...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -116,6 +123,13 @@ call 3_CompileUiScriptLib.bat
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.c
+echo # &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.py</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Touching CUiScriptLib...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
