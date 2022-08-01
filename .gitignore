@@ -6,4 +6,7 @@
 *.bak
 
 .vs/
+Release/
+Debug/
+Extern/
 *.vcxproj.user

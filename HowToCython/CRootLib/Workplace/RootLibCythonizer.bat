@@ -1,2 +1,2 @@
-@python.exe RootLibCythonizer.py
+@c:\python27\python.exe RootLibCythonizer.py
 @pause

@@ -46,7 +46,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Python27\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <TargetName>rootlib_d</TargetName>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
@@ -56,6 +56,7 @@
     <OutDir>$(SolutionDir)..\Extern\lib\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <PreBuildEventUseInBuild>true</PreBuildEventUseInBuild>
+    <IncludePath>C:\Python27\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -80,6 +81,13 @@ call 3_CompileRootLib.bat
 </Command>
       <Message>cythonizing root</Message>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.c
+echo # &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.py</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Touching CRootLib...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -116,6 +124,13 @@ call 3_CompileRootLib.bat
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.c
+echo # &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.py</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Touching CRootLib...</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
