@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Workplace\UiScriptLib\cyTemp\_RESERVED" />
     <ClCompile Include="Workplace\UiScriptLib\cyTemp\atlaswindow.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -81,8 +82,7 @@ call 3_CompileUiScriptLib.bat
       <Message>cythonizing uiscript</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.c
-echo # &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.py</Command>
+      <Command>copy Nul $(ProjectDir)Workplace\UiScriptLib\cyTemp\_RESERVED</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Touching CUiScriptLib...</Message>
@@ -124,8 +124,7 @@ call 3_CompileUiScriptLib.bat
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
     <PostBuildEvent>
-      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.c
-echo # &gt;&gt; $(ProjectDir)Workplace\UiScriptLib\cyTemp\atlaswindow.py</Command>
+      <Command>copy Nul $(ProjectDir)Workplace\UiScriptLib\cyTemp\_RESERVED</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Touching CUiScriptLib...</Message>

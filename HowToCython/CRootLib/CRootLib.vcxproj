@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Workplace\RootLib\cyTemp\_RESERVED" />
     <ClCompile Include="Workplace\RootLib\cyTemp\Prototype.c" />
     <ClCompile Include="Workplace\RootLib\cyTemp\system.c" />
   </ItemGroup>
@@ -82,8 +83,7 @@ call 3_CompileRootLib.bat
       <Message>cythonizing root</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.c
-echo # &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.py</Command>
+      <Command>copy Nul $(ProjectDir)Workplace\RootLib\cyTemp\_RESERVED</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Touching CRootLib...</Message>
@@ -125,8 +125,7 @@ call 3_CompileRootLib.bat
       <PreserveSbr>true</PreserveSbr>
     </Bscmake>
     <PostBuildEvent>
-      <Command>echo // &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.c
-echo # &gt;&gt; $(ProjectDir)Workplace\RootLib\cyTemp\system.py</Command>
+      <Command>copy Nul $(ProjectDir)Workplace\RootLib\cyTemp\_RESERVED</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Touching CRootLib...</Message>
