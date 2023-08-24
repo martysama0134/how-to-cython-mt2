@@ -19,7 +19,7 @@ def run(moduleLst, libname, caseSensitive = False):
 	initSource.write('\n')
 	initSource.write('struct %s_SMethodDef\n' % libname)
 	initSource.write('{\n')
-	initSource.write('	char* func_name;\n')
+	initSource.write('	const char* func_name;\n')
 	initSource.write('	void (*func)();\n')
 	initSource.write('};\n')
 	initSource.write('\n')
@@ -125,5 +125,5 @@ def run(moduleLst, libname, caseSensitive = False):
 	initHeader.write("*/\n")
 	initHeader.write('void init%sManager();\n' % libname)
 	initHeader.write('#endif\n')
-	
+
 	return sourceName
